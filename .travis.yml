@@ -25,10 +25,7 @@ install:
  - export PATH="$HOME/miniconda/bin:$PATH"
  - hash -r
  - conda config --set always_yes yes 
- - conda update --all -y
  - conda install anaconda conda-build -y
- - conda config --add channels omnia
- - conda config --add channels acellera
 
  - conda create -q -n travis-env python=$TRAVIS_PYTHON_VERSION 
  - source activate travis-env
@@ -42,7 +39,9 @@ install:
  - wget http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda_7.5.18_linux.run
  - chmod +x cuda_7.5.18_linux.run
  - ./cuda_7.5.18_linux.run --silent --toolkit --toolkitpath=$PWD
-
+ - wget https://cmake.org/files/v3.5/cmake-3.5.0-Linux-x86_64.tar.gz
+ - tar -zxvf cmake-3.5.0-Linux-x86_64.tar.gz
+ - ln -s cmake-3.5.0-Linux-x86_64 cmake
 
  - conda build --python $TRAVIS_PYTHON_VERSION package/
  - conda install gromacs --use-local

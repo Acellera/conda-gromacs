@@ -1,7 +1,7 @@
 #!/bin/sh
 printenv
 pwd
-export PATH="$PWD/bin:$PATH"
+export PATH="$PWD/cmake/bin:$PWD/bin:$PATH"
 
 wget ftp://ftp.gromacs.org/pub/gromacs/gromacs-5.1.2.tar.gz 
 tar -zxf gromacs-5.1.2.tar.gz

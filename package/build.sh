@@ -1,5 +1,4 @@
 #!/bin/sh
-. /etc/profile.d/module.sh
 printenv
 pwd
 export PATH="$PWD/bin:$PATH"

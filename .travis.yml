@@ -36,14 +36,16 @@ install:
  - export BUILD_NUMBER=$(git describe --tags | sed 's/-/ /g' | awk '{print $2}')
  # Always set it to 0 so we don't get a new release at every successful commit
  - export BUILD_NUMBER=0
- - pwd
- - cd $HOME
+
+ - DD="$PWD"
+ - cd "$HOME"
  - wget http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda_7.5.18_linux.run
  - chmod +x cuda_7.5.18_linux.run
  - ./cuda_7.5.18_linux.run --silent --toolkit --toolkitpath=$PWD
  - wget --no-check-certificate http://cmake.org/files/v3.5/cmake-3.5.0-Linux-x86_64.tar.gz
  - tar -zxvf cmake-3.5.0-Linux-x86_64.tar.gz
  - ln -s cmake-3.5.0-Linux-x86_64 cmake
+ - cd "$DD"
 
  - conda build --python $TRAVIS_PYTHON_VERSION package/
  - conda install gromacs --use-local

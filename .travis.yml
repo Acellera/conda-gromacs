@@ -25,8 +25,7 @@ install:
  - export PATH="$HOME/miniconda/bin:$PATH"
  - hash -r
  - conda config --set always_yes yes 
-# - conda install anaconda conda-build -y
- - conda install conda-build -y
+ - conda install anaconda conda-build -y
 
  - conda create -q -n travis-env python=$TRAVIS_PYTHON_VERSION 
  - source activate travis-env

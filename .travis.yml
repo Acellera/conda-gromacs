@@ -15,6 +15,9 @@ matrix:
        - gcc-4.4
        - g++-4.4
        - tcl-dev
+       - libatlas-dev
+       - libblas-dev
+       - liblapack-dev
 
 install:
  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh; fi

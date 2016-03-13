@@ -15,7 +15,7 @@ export CXX=g++-4.4
 export FC=gfortran-4.4
 
 ln -s $(which gcc-4.4) "$HOME/bin/gcc"
-CC=gcc-4.4 CXX=g++-4.4 FC=gfortran-4.4 cmake ../gromacs-5.1.2  -DGMX_BUILD_OWN_FFTW=ON -DGMX_GPU=ON -DGMX_COOL_QUOTES=OFF -DBUILD_SHARED_LIBS=OFF -DGMX_SIMD=SSE4.1 -DCMAKE_INSTALL_PREFIX="$SP_DIR/../../.." -DGMX_PREFER_STATIC_LIBS=ON -DGMX_EXTERNAL_BLAS=OFF  -DGMX_EXTERNAL_LAPACK=OFF
+CC=gcc-4.4 CXX=g++-4.4 FC=gfortran-4.4 CFLAGS=--static CXXFLAGS=--static cmake ../gromacs-5.1.2  -DGMX_BUILD_OWN_FFTW=ON -DGMX_GPU=ON -DGMX_COOL_QUOTES=OFF -DBUILD_SHARED_LIBS=OFF -DGMX_SIMD=AVX_256 -DCMAKE_INSTALL_PREFIX="$SP_DIR/../../.." -DGMX_PREFER_STATIC_LIBS=ON -DGMX_EXTERNAL_BLAS=OFF  -DGMX_EXTERNAL_LAPACK=OFF  -DGMX_BUILD_SHARED_EXE=OFF
 make -j 2
 make install
 rm -rf "$SP_DIR/../../../include"
@@ -28,7 +28,7 @@ echo '#!/bin/sh
 
 DIR=$(dirname "$0")
 export GMXDATA="$DIR/share/gromacs"
-export LD_LIBRARY_PATH="$DIR/../lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$DIR/../lib/compat-libc:$LD_LIBRARY_PATH"
 "$DIR/gmx.bin" "$@"
 ' >> gmx
 chmod +x gmx

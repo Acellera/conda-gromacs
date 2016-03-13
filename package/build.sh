@@ -28,7 +28,7 @@ echo '#!/bin/sh
 
 DIR=$(dirname "$0")
 export GMXDATA="$DIR/share/gromacs"
-export LD_LIBRARY_PATH="$DIR/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$DIR/../lib:$LD_LIBRARY_PATH"
 "$DIR/gmx.bin" "$@"
 ' >> gmx
 chmod +x gmx

@@ -19,6 +19,7 @@ matrix:
        - libblas-dev
        - liblapack-dev
        - libatlas-base-dev
+       - libc6-dev
 
 install:
  - ls /usr/lib/*atlas*.a

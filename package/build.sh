@@ -30,13 +30,17 @@ CFLAGS=--static CXXFLAGS=--static cmake ../gromacs-5.1.2  -DGMX_BUILD_OWN_FFTW=O
 
 # Fix CMAKE brain-damage
 echo "Fix CMAKE"
+find /usr -name "librt.a"
 find . -name link.txt -exec  sed -i 's/-lpthread/& -ldl/g' {} \; -print
 find . -name link.txt -exec sed -i 's/-lrt/\/usr\/lib\/x86_64-linux-gnu\/librt.a /g' {} \; -print 
 
-make -j 2
-find . -name link.txt -exec sed -i 's/-lpthread/& -ldl/g' {} \; -print
-find . -name link.txt -exec sed -i 's/-lrt/\/usr\/lib\/x86_64-linux-gnu\/librt.a /g' {} \; -print 
-make install
+cat ./src/programs/CMakeFiles/gmx.dir/link.txt
+cat ./share/template/CMakeFiles/template.dir/link.txt
+
+make -j 2 install
+#find . -name link.txt -exec sed -i 's/-lpthread/& -ldl/g' {} \; -print
+#find . -name link.txt -exec sed -i 's/-lrt/\/usr\/lib\/x86_64-linux-gnu\/librt.a /g' {} \; -print 
+#make install
 
 rm -rf "$PREFIX/include"
 rm -rf "$PREFIX/lib64"

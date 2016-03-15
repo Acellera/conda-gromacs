@@ -62,6 +62,6 @@ script:
 after_success:
  - export PATH="$HOME/miniconda/bin:$PATH"
  - echo $PATH
- - anaconda -t $ANACONDA_TOKEN upload  $HOME/miniconda/conda-bld/*-64/gromacs-[0-9]*.tar.bz2 -u acellera  --force || /usr/bin/true 
+ - anaconda -t $ANACONDA_TOKEN upload  $HOME/miniconda/conda-bld/*-64/gromacs-[0-9]*.tar.bz2 -u acellera  --force 
 
 

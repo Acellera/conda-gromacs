@@ -1,4 +1,5 @@
 #!/bin/sh
+
 printenv
 pwd
 export PATH="$HOME/cmake/bin:$HOME/bin:$PATH"

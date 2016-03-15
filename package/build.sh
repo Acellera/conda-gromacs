@@ -33,7 +33,7 @@ echo "Fix CMAKE"
 find /usr -name "librt.a"
 find . -name link.txt -exec  sed -i 's/-lpthread/& -ldl/g' {} \; -print
 find . -name link.txt -exec sed -i 's/-lrt/\/usr\/lib\/x86_64-linux-gnu\/librt.a /g' {} \; -print 
-find . -name link.txt -exec sed -i '/\/usr\/lib\/x86_64-linux-gnu\/librt.so/ /g' {} \; -print 
+find . -name link.txt -exec sed -i 's/\/usr\/lib\/x86_64-linux-gnu\/librt.so/ /g' {} \; -print 
 
 cat ./src/programs/CMakeFiles/gmx.dir/link.txt
 cat ./share/template/CMakeFiles/template.dir/link.txt
